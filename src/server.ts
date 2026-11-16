@@ -55,7 +55,7 @@ export function createServer(): McpServer {
     {
       title: "List Mongolian aimags",
       description:
-        "List all 21 aimags plus Ulaanbaatar, with codes, Cyrillic and English names and capital cities.",
+        "List all 21 aimags plus Ulaanbaatar, with NSO and ISO 3166-2 codes, Cyrillic and English names and capital cities.",
       inputSchema: {},
     },
     async () => json(AIMAGS),

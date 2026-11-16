@@ -22,6 +22,18 @@ describe("data shape", () => {
     expect(UB_DISTRICTS.every((d) => /^11\d\d$/.test(d.code))).toBe(true);
   });
 
+  it("has a unique, well-formed ISO 3166-2 code per first-level division", () => {
+    const iso = AIMAGS.map((a) => a.iso);
+    expect(new Set(iso).size).toBe(22);
+    expect(AIMAGS.filter((a) => !a.isCapitalCity).every((a) => /^MN-0\d\d$/.test(a.iso))).toBe(true);
+    expect(Object.fromEntries(AIMAGS.map((a) => [a.id, a.iso]))).toMatchObject({
+      ulaanbaatar: "MN-1",
+      khovsgol: "MN-041",
+      zavkhan: "MN-057",
+      govisumber: "MN-064",
+    });
+  });
+
   it("has 330 soums, every one in a real aimag and none in Ulaanbaatar", () => {
     expect(SOUMS).toHaveLength(330);
     const perAimag = new Map<string, number>();

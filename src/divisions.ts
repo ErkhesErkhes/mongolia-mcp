@@ -5,6 +5,8 @@ export interface Aimag {
   id: string;
   /** NSO administrative unit code. The OCHA P-code is "MN" + code. */
   code: string;
+  /** ISO 3166-2 subdivision code. */
+  iso: string;
   nameMn: string;
   nameEn: string;
   capitalMn: string;
@@ -29,21 +31,23 @@ export interface UbDistrict {
 /**
  * 21 aimags plus the capital city Ulaanbaatar (22 first-level divisions).
  * Codes: OCHA COD-AB Mongolia v01 (https://data.humdata.org/dataset/cod-ab-mng).
+ * ISO codes: ISO Online Browsing Platform, checked 2026-11-16 (https://www.iso.org/obp/ui/#iso:code:3166:MN).
  */
 export const AIMAGS: Aimag[] = [
-  { id: "arkhangai", code: "65", nameMn: "Архангай", nameEn: "Arkhangai", capitalMn: "Цэцэрлэг", capitalEn: "Tsetserleg" },
-  { id: "bayan-olgii", code: "83", nameMn: "Баян-Өлгий", nameEn: "Bayan-Ölgii", capitalMn: "Өлгий", capitalEn: "Ölgii", aliases: ["Bayan-Ulgii", "Bayan Olgii"] },
-  { id: "bayankhongor", code: "64", nameMn: "Баянхонгор", nameEn: "Bayankhongor", capitalMn: "Баянхонгор", capitalEn: "Bayankhongor" },
-  { id: "bulgan", code: "63", nameMn: "Булган", nameEn: "Bulgan", capitalMn: "Булган", capitalEn: "Bulgan" },
-  { id: "darkhan-uul", code: "45", nameMn: "Дархан-Уул", nameEn: "Darkhan-Uul", capitalMn: "Дархан", capitalEn: "Darkhan" },
-  { id: "dornod", code: "21", nameMn: "Дорнод", nameEn: "Dornod", capitalMn: "Чойбалсан", capitalEn: "Choibalsan" },
-  { id: "dornogovi", code: "44", nameMn: "Дорноговь", nameEn: "Dornogovi", capitalMn: "Сайншанд", capitalEn: "Sainshand", aliases: ["Dornogobi"] },
-  { id: "dundgovi", code: "48", nameMn: "Дундговь", nameEn: "Dundgovi", capitalMn: "Мандалговь", capitalEn: "Mandalgovi", aliases: ["Dundgobi"] },
-  { id: "govi-altai", code: "82", nameMn: "Говь-Алтай", nameEn: "Govi-Altai", capitalMn: "Алтай", capitalEn: "Altai", aliases: ["Gobi-Altai", "Gobi Altai"] },
-  { id: "govisumber", code: "42", nameMn: "Говьсүмбэр", nameEn: "Govisümber", capitalMn: "Чойр", capitalEn: "Choir", aliases: ["Gobisumber", "Govi-Sumber"] },
+  { id: "arkhangai", code: "65", iso: "MN-073", nameMn: "Архангай", nameEn: "Arkhangai", capitalMn: "Цэцэрлэг", capitalEn: "Tsetserleg" },
+  { id: "bayan-olgii", code: "83", iso: "MN-071", nameMn: "Баян-Өлгий", nameEn: "Bayan-Ölgii", capitalMn: "Өлгий", capitalEn: "Ölgii", aliases: ["Bayan-Ulgii", "Bayan Olgii"] },
+  { id: "bayankhongor", code: "64", iso: "MN-069", nameMn: "Баянхонгор", nameEn: "Bayankhongor", capitalMn: "Баянхонгор", capitalEn: "Bayankhongor" },
+  { id: "bulgan", code: "63", iso: "MN-067", nameMn: "Булган", nameEn: "Bulgan", capitalMn: "Булган", capitalEn: "Bulgan" },
+  { id: "darkhan-uul", code: "45", iso: "MN-037", nameMn: "Дархан-Уул", nameEn: "Darkhan-Uul", capitalMn: "Дархан", capitalEn: "Darkhan" },
+  { id: "dornod", code: "21", iso: "MN-061", nameMn: "Дорнод", nameEn: "Dornod", capitalMn: "Чойбалсан", capitalEn: "Choibalsan" },
+  { id: "dornogovi", code: "44", iso: "MN-063", nameMn: "Дорноговь", nameEn: "Dornogovi", capitalMn: "Сайншанд", capitalEn: "Sainshand", aliases: ["Dornogobi"] },
+  { id: "dundgovi", code: "48", iso: "MN-059", nameMn: "Дундговь", nameEn: "Dundgovi", capitalMn: "Мандалговь", capitalEn: "Mandalgovi", aliases: ["Dundgobi"] },
+  { id: "govi-altai", code: "82", iso: "MN-065", nameMn: "Говь-Алтай", nameEn: "Govi-Altai", capitalMn: "Алтай", capitalEn: "Altai", aliases: ["Gobi-Altai", "Gobi Altai"] },
+  { id: "govisumber", code: "42", iso: "MN-064", nameMn: "Говьсүмбэр", nameEn: "Govisümber", capitalMn: "Чойр", capitalEn: "Choir", aliases: ["Gobisumber", "Govi-Sumber"] },
   {
     id: "khentii",
     code: "23",
+    iso: "MN-039",
     nameMn: "Хэнтий",
     nameEn: "Khentii",
     capitalMn: "Чингис",
@@ -51,19 +55,20 @@ export const AIMAGS: Aimag[] = [
     // Renamed from Öndörkhaan to Chinggis City in 2013; people still use the old name.
     capitalAliases: ["Öndörkhaan", "Ondorkhaan", "Undurkhaan", "Өндөрхаан", "Chinggis City", "Чингис хот"],
   },
-  { id: "khovd", code: "84", nameMn: "Ховд", nameEn: "Khovd", capitalMn: "Ховд", capitalEn: "Khovd" },
-  { id: "khovsgol", code: "67", nameMn: "Хөвсгөл", nameEn: "Khövsgöl", capitalMn: "Мөрөн", capitalEn: "Mörön", aliases: ["Khuvsgul", "Hovsgol", "Huvsgul"] },
-  { id: "omnogovi", code: "46", nameMn: "Өмнөговь", nameEn: "Ömnögovi", capitalMn: "Даланзадгад", capitalEn: "Dalanzadgad", aliases: ["Umnugovi", "Omnogobi", "Umnugobi"] },
-  { id: "orkhon", code: "61", nameMn: "Орхон", nameEn: "Orkhon", capitalMn: "Эрдэнэт", capitalEn: "Erdenet" },
-  { id: "ovorkhangai", code: "62", nameMn: "Өвөрхангай", nameEn: "Övörkhangai", capitalMn: "Арвайхээр", capitalEn: "Arvaikheer", aliases: ["Uvurkhangai", "Uvurhangai"] },
-  { id: "selenge", code: "43", nameMn: "Сэлэнгэ", nameEn: "Selenge", capitalMn: "Сүхбаатар", capitalEn: "Sükhbaatar" },
-  { id: "sukhbaatar", code: "22", nameMn: "Сүхбаатар", nameEn: "Sükhbaatar", capitalMn: "Баруун-Урт", capitalEn: "Baruun-Urt" },
-  { id: "tov", code: "41", nameMn: "Төв", nameEn: "Töv", capitalMn: "Зуунмод", capitalEn: "Zuunmod", aliases: ["Tuv"] },
-  { id: "uvs", code: "85", nameMn: "Увс", nameEn: "Uvs", capitalMn: "Улаангом", capitalEn: "Ulaangom" },
-  { id: "zavkhan", code: "81", nameMn: "Завхан", nameEn: "Zavkhan", capitalMn: "Улиастай", capitalEn: "Uliastai" },
+  { id: "khovd", code: "84", iso: "MN-043", nameMn: "Ховд", nameEn: "Khovd", capitalMn: "Ховд", capitalEn: "Khovd" },
+  { id: "khovsgol", code: "67", iso: "MN-041", nameMn: "Хөвсгөл", nameEn: "Khövsgöl", capitalMn: "Мөрөн", capitalEn: "Mörön", aliases: ["Khuvsgul", "Hovsgol", "Huvsgul"] },
+  { id: "omnogovi", code: "46", iso: "MN-053", nameMn: "Өмнөговь", nameEn: "Ömnögovi", capitalMn: "Даланзадгад", capitalEn: "Dalanzadgad", aliases: ["Umnugovi", "Omnogobi", "Umnugobi"] },
+  { id: "orkhon", code: "61", iso: "MN-035", nameMn: "Орхон", nameEn: "Orkhon", capitalMn: "Эрдэнэт", capitalEn: "Erdenet" },
+  { id: "ovorkhangai", code: "62", iso: "MN-055", nameMn: "Өвөрхангай", nameEn: "Övörkhangai", capitalMn: "Арвайхээр", capitalEn: "Arvaikheer", aliases: ["Uvurkhangai", "Uvurhangai"] },
+  { id: "selenge", code: "43", iso: "MN-049", nameMn: "Сэлэнгэ", nameEn: "Selenge", capitalMn: "Сүхбаатар", capitalEn: "Sükhbaatar" },
+  { id: "sukhbaatar", code: "22", iso: "MN-051", nameMn: "Сүхбаатар", nameEn: "Sükhbaatar", capitalMn: "Баруун-Урт", capitalEn: "Baruun-Urt" },
+  { id: "tov", code: "41", iso: "MN-047", nameMn: "Төв", nameEn: "Töv", capitalMn: "Зуунмод", capitalEn: "Zuunmod", aliases: ["Tuv"] },
+  { id: "uvs", code: "85", iso: "MN-046", nameMn: "Увс", nameEn: "Uvs", capitalMn: "Улаангом", capitalEn: "Ulaangom" },
+  { id: "zavkhan", code: "81", iso: "MN-057", nameMn: "Завхан", nameEn: "Zavkhan", capitalMn: "Улиастай", capitalEn: "Uliastai" },
   {
     id: "ulaanbaatar",
     code: "11",
+    iso: "MN-1",
     nameMn: "Улаанбаатар",
     nameEn: "Ulaanbaatar",
     capitalMn: "Улаанбаатар",

@@ -8,7 +8,7 @@ An [MCP](https://modelcontextprotocol.io) server with small, correct utilities f
 | --- | --- |
 | `romanize_mongolian` | Cyrillic to Latin using the national standard **MNS 5217:2012** (`Хөвсгөл` -> `Khövsgöl`, `Цэцэрлэг` -> `Tsetserleg`). Optional `ascii` flag drops the umlauts. |
 | `lookup_mongolian_place` | Find an aimag, aimag capital, soum, or Ulaanbaatar district by name. Accepts Cyrillic and the spellings people actually type (`Khuvsgul`, `Hovsgol`, `Uvurkhangai`, `Bayan-Ulgii`). |
-| `list_mongolian_aimags` | All 21 aimags plus Ulaanbaatar, with codes, Cyrillic and English names and capitals. |
+| `list_mongolian_aimags` | All 21 aimags plus Ulaanbaatar, with NSO and ISO 3166-2 codes, Cyrillic and English names and capitals. |
 | `list_mongolian_soums` | The 330 soums with their codes, optionally filtered by aimag (`aimag: "Khuvsgul"`). |
 | `list_ulaanbaatar_districts` | The 9 districts of Ulaanbaatar. |
 
@@ -45,8 +45,9 @@ Place data links to where it came from. The romanization table follows MNS 5217:
 | Data | Source | Notes |
 | --- | --- | --- |
 | Aimag, district and soum codes; soum names | [OCHA COD-AB Mongolia v01](https://data.humdata.org/dataset/cod-ab-mng) (sheets `mng_admin1`, `mng_admin2`) | Original source: National Statistical Office of Mongolia. Licence: [CC BY-IGO](https://docs.humdata.org/about/data-licenses). Reviewed by OCHA on 30 October 2025. Regenerate with `scripts/build-soums.mjs`. |
+| ISO 3166-2:MN codes | [ISO Online Browsing Platform](https://www.iso.org/obp/ui/#iso:code:3166:MN) | All 22 codes checked against the platform on 16 November 2026. ISO spells the names in BGN/PCGN 1964 (`Hövsgöl`, `Dzavhan`); only the codes are taken from it. |
 
-Codes are the National Statistical Office administrative unit codes (`67` Khövsgöl, `6728` Renchinlkhümbe). Prefix `MN` to get the OCHA P-code (`MN6728`).
+Codes are the National Statistical Office administrative unit codes (`67` Khövsgöl, `6728` Renchinlkhümbe). Prefix `MN` to get the OCHA P-code (`MN6728`). These are not the ISO codes: ISO 3166-2 numbers the same aimags differently (`MN-041` Khövsgöl), and each aimag carries both.
 
 ## Limitations (read these)
 
@@ -65,7 +66,7 @@ Good first contributions, roughly in order of usefulness:
 - [ ] Bags and khoroos, once a complete and current official list can be linked
 - [ ] Public holidays and the lunar calendar (Tsagaan Sar), only with a verified algorithm or a verified table
 - [ ] Traditional Mongolian script support
-- [ ] ISO 3166-2:MN codes for first-level divisions, checked against the [ISO Online Browsing Platform](https://www.iso.org/obp/ui/#iso:code:3166:MN)
+- [x] ISO 3166-2:MN codes for first-level divisions
 
 If you add data, please link the source in the PR. Wrong data is worse than missing data.
 
