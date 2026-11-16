@@ -1,0 +1,53 @@
+{
+  "name": "mongolia-mcp",
+  "version": "0.2.0",
+  "description": "MCP server with Mongolian developer utilities: MNS 5217:2012 Cyrillic to Latin romanization and aimag, soum and Ulaanbaatar district lookup.",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "mongolia-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "start": "node dist/index.js",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "mongolia",
+    "mongolian",
+    "cyrillic",
+    "transliteration",
+    "romanization",
+    "mns-5217",
+    "aimag",
+    "soum"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ErkhesErkhes/mongolia-mcp.git"
+  },
+  "homepage": "https://github.com/ErkhesErkhes/mongolia-mcp#readme",
+  "bugs": "https://github.com/ErkhesErkhes/mongolia-mcp/issues",
+  "author": "Erkhes",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  }
+}
